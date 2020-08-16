@@ -1,0 +1,110 @@
+{
+    "inbounds": [
+        {
+            "port": 1080,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            },
+            "settings": {
+                "auth": "noauth",
+                "udp": false
+            }
+        },
+        {
+            "port": 1081,
+            "listen": "127.0.0.1",
+            "protocol": "http",
+            "settings": {
+                "timeout": 8
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "proxy",
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "example.com",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "example.uuid",
+                                "alterId": 64
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "wsSettings": {
+                    "path": "/example"
+                }
+            }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
+        }
+    ],
+    "dns": {
+        "servers": [
+            "223.6.6.6",
+            {
+                "address": "1.1.1.1",
+                "port": 53,
+                "domains": [
+                    "geosite:geolocation-!cn"
+                ]
+            }
+        ]
+    },
+    "routing": {
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "domain:dev.com",
+                    "domain:shzhanmeng.com",
+                    "domain:wonderful-app.com"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn",
+                    "domain:icloud.com",
+                    "domain:apple.com",
+                    "domain:v2ex.com",
+                    "domain:github.com"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:private",
+                    "geoip:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "proxy",
+                "network": "tcp,udp"
+            }
+        ]
+    }
+}
