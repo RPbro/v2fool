@@ -11,7 +11,7 @@ v2ray + websocket + nginx + tls + bbr
 ```shell script
 sudo -i
 apt update && apt install -y git wget make
-git clone https://github.com/NERVEbing/v2fool.git
+git clone https://github.com/RPbro/v2fool.git
 cd v2fool
 make build DOMAIN=example.com WS_PATH=/example
 ```
@@ -23,4 +23,6 @@ cd v2fool
 make start
 make stop
 make restart
+make status
+make logs
 ```
