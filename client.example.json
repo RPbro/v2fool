@@ -32,11 +32,11 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "example.com",
+                        "address": "DOMAIN",
                         "port": 443,
                         "users": [
                             {
-                                "id": "example.uuid",
+                                "id": "AUTH_UUID",
                                 "alterId": 64
                             }
                         ]
@@ -47,7 +47,25 @@
                 "network": "ws",
                 "security": "tls",
                 "wsSettings": {
-                    "path": "/example"
+                    "path": "WS_PATH"
+                }
+            }
+        },
+        {
+            "tag": "neteasemusic",
+            "protocol": "http",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "DOMAIN",
+                        "port": "NETEASEMUSIC_PORT"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "security": "none",
+                "tlsSettings": {
+                    "allowInsecure": false
                 }
             }
         },
@@ -59,7 +77,7 @@
     ],
     "dns": {
         "servers": [
-            "223.6.6.6",
+            "223.5.5.5",
             {
                 "address": "1.1.1.1",
                 "port": 53,
@@ -74,30 +92,38 @@
         "rules": [
             {
                 "type": "field",
-                "outboundTag": "direct",
+                "outboundTag": "neteasemusic",
                 "domain": [
-                    "domain:dev.com",
-                    "domain:shzhanmeng.com",
-                    "domain:wonderful-app.com"
+                    "domain:music.163.com"
                 ]
             },
             {
                 "type": "field",
                 "outboundTag": "direct",
                 "domain": [
-                    "geosite:cn",
                     "domain:icloud.com",
+                    "domain:icloud-content.com",
                     "domain:apple.com",
-                    "domain:v2ex.com",
-                    "domain:github.com"
+                    "domain:v2ex.com"
                 ]
             },
             {
                 "type": "field",
                 "outboundTag": "direct",
                 "ip": [
+                    "223.5.5.5/32",
+                    "119.29.29.29/32",
+                    "180.76.76.76/32",
+                    "114.114.114.114/32",
                     "geoip:private",
                     "geoip:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
                 ]
             },
             {
