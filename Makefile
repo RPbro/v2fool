@@ -8,7 +8,7 @@ export DOMAIN  ?= example.com
 export WS_PATH ?= /example
 
 export TEMP_DIR  ?= /tmp
-export V2RAY_DIR  ?= /etc/v2ray
+export V2RAY_DIR  ?= /usr/local/etc/v2ray
 export NGINX_CONF_DIR ?= /etc/nginx/conf.d
 
 build: clear v2ray nginx bbr stop ca start
