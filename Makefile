@@ -36,9 +36,9 @@ v2ray:
 	wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -P $(TEMP_DIR)
 	bash $(TEMP_DIR)/install-release.sh
 	rm -rf $(V2RAY_DIR)/config.json
-	ln -s $(PWD)/v2ray.config.json $(V2RAY_DIR)/config.json
-	sed -i "s:AUTH_UUID:$(/usr/bin/v2ray/v2ctl uuid):" $(PWD)/v2ray.config.json
+	sed -i "s:AUTH_UUID:$(/usr/local/bin/v2ctl uuid):" $(PWD)/v2ray.config.json
 	sed -i "s:WS_PATH:$(WS_PATH):" $(PWD)/v2ray.config.json
+	cp $(PWD)/v2ray.config.json $(V2RAY_DIR)/config.json
 
 nginx:
 	# 安装nginx并配置
