@@ -33,8 +33,8 @@ renew:
 
 v2ray:
 	# 安装v2ray并配置
-	wget https://install.direct/go.sh -P $(TEMP_DIR)
-	bash $(TEMP_DIR)/go.sh
+	wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -P $(TEMP_DIR)
+	bash $(TEMP_DIR)/install-release.sh
 	rm -rf $(V2RAY_DIR)/config.json
 	ln -s $(PWD)/v2ray.config.json $(V2RAY_DIR)/config.json
 	sed -i "s:AUTH_UUID:$(/usr/bin/v2ray/v2ctl uuid):" $(PWD)/v2ray.config.json
