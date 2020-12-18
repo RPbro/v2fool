@@ -6,6 +6,8 @@
 export DOMAIN  ?= example.com
 # 混淆路径 example.com/example
 export WS_PATH ?= /example
+# uuid
+export UUID ?= 435a5868-936b-bf0c-7ac8-03df31e57f11
 
 export TEMP_DIR  ?= /tmp
 export V2RAY_DIR  ?= /usr/local/etc/v2ray
@@ -36,7 +38,7 @@ v2ray:
 	wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -P $(TEMP_DIR)
 	bash $(TEMP_DIR)/install-release.sh
 	rm -rf $(V2RAY_DIR)/config.json
-	sed -i "s:AUTH_UUID:$(/usr/local/bin/v2ctl uuid):" $(PWD)/v2ray.config.json
+	sed -i "s:AUTH_UUID:$(UUID):" $(PWD)/v2ray.config.json
 	sed -i "s:WS_PATH:$(WS_PATH):" $(PWD)/v2ray.config.json
 	cp $(PWD)/v2ray.config.json $(V2RAY_DIR)/config.json
 
