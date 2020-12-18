@@ -13,7 +13,8 @@ sudo -i
 apt update && apt install -y git wget make
 git clone https://github.com/RPbro/v2fool.git
 cd v2fool
-make build DOMAIN=example.com WS_PATH=/example
+# UUID生成:https://www.uuidgenerator.net
+make build DOMAIN=example.com WS_PATH=/example UUID=435a5868-936b-bf0c-7ac8-03df31e57f11
 ```
 ## 
 
