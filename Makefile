@@ -6,7 +6,7 @@
 export DOMAIN  ?= example.com
 # 混淆路径 example.com/example
 export WS_PATH ?= /example
-# uuid
+# uuid https://www.uuidgenerator.net
 export UUID ?= 435a5868-936b-bf0c-7ac8-03df31e57f11
 
 export TEMP_DIR  ?= /tmp
