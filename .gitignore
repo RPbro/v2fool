@@ -4,3 +4,5 @@ v2ray.crt
 v2ray.key
 access.log
 error.log
+geoip.dat
+geosite.dat
