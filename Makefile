@@ -61,6 +61,13 @@ bbr:
 	sysctl net.ipv4.tcp_available_congestion_control
 	lsmod | grep bbr
 
+rules:
+	rm -rf ./geoip.dat
+	rm -rf ./geosite.dat
+	# https://github.com/Loyalsoldier/v2ray-rules-dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+
 start:
 	systemctl start nginx
 	systemctl start v2ray
